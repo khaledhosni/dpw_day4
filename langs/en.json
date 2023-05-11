@@ -1,0 +1,9 @@
+{
+  "hello": "Hello",
+  "world": "World",
+  "greeting": "Good {time}",
+  "title": "DP World App",
+  "welcome_message": "Welcome to DP World App",
+  "login": "Login",
+  "register": "Register"
+}
