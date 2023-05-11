@@ -45,4 +45,18 @@ class UserService {
   }
 
 
+  Future<bool>  upload(String base64Str,{required String name,required String type}) async{
+
+    var response = await _api.dio.post("Users", data: {
+      'name':name,
+      'type':type,
+      'src':base64Str
+    });
+
+    if(response.statusCode==201)
+     return true;
+
+    return false;
+  }
+
 }
