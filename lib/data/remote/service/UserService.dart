@@ -26,9 +26,23 @@ class UserService {
 
 
 
-  Future<User> getUserByID(int id) async {
-    var response = await _api.dio.get("Users/$id");
+  Future<User> getUserByNameCountry(String name,String country) async {
 
+   // var response = await _api.dio.get("Users?name=$name&country=$country");
+
+
+    var response = await _api.dio.get("Users", queryParameters: {'name':name, 'country':country});
     return User.fromJson(response.data);
   }
+
+  Future<User?>  addUser(User u) async{
+
+      var response = await _api.dio.post("Users", data: u.toJson());
+
+    if(response.statusCode==201)
+      return User.fromJson(response.data);
+    return null;
+  }
+
+
 }

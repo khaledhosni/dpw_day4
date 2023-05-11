@@ -6,6 +6,7 @@ import 'package:dpw_day4/data/local/model/Person.dart';
 import 'package:dpw_day4/data/remote/model/User.dart';
 import 'package:dpw_day4/data/remote/service/UserService.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -90,6 +91,15 @@ class _HomeState extends State<Home> {
 
 
                   }, child: Text("Get Users")),
+              ElevatedButton(onPressed: ()async{
+
+                var userService=UserService();
+
+                var u= await userService.addUser(User(name: "Khaled Hosni",country: "Egypt"));
+                u==null? Fluttertoast.showToast(msg: "Error in adding new user")
+                    : Fluttertoast.showToast(msg: " user has been added with ${u.id}");
+
+              }, child: Text("Add User")),
             ],
           ),
 
